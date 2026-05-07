@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import exchangers
+from routers.exchangers import router as exchangers_router  
 
 app = FastAPI(
     title="BestChange API",
@@ -7,7 +7,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-app.include_router(exchangers.router, prefix="/api", tags=["exchangers"])
+app.include_router(exchangers_router, prefix="/api", tags=["exchangers"])
 
 @app.get("/")
 def root():
