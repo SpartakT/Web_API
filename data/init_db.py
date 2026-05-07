@@ -1,7 +1,13 @@
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import pandas as pd
 from sqlalchemy.orm import Session
-from database import engine, Base
-from models import Exchanger
+
+from database import engine
+from models import Base, Exchanger
 
 
 def init_database():
@@ -24,7 +30,8 @@ def init_database():
             session.add(exchanger)
 
         session.commit()
-    print("База данных успешно инициализирована")
+
+    print(f"База данных успешно инициализирована. Загружено {len(df)} записей.")
 
 
 if __name__ == "__main__":
